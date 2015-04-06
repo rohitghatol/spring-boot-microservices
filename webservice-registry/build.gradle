@@ -1,6 +1,6 @@
 buildscript {
 	project.ext {
-         bootVersion = '1.2.3.RELEASE'
+        bootVersion = '1.2.3.RELEASE'
 		cloudVersion = '1.0.0.RELEASE'
     }
     repositories {
@@ -11,6 +11,7 @@ buildscript {
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${project.bootVersion}"
         classpath 'se.transmode.gradle:gradle-docker:1.2'
+		classpath "io.spring.gradle:dependency-management-plugin:0.4.0.RELEASE"
     }
 }
 
@@ -20,9 +21,20 @@ apply plugin: 'spring-boot'
 apply plugin: 'java'
 apply plugin: 'docker'
 
+apply plugin: "io.spring.dependency-management"
+
+dependencyManagement {
+  imports {
+	mavenBom 'org.springframework.cloud:spring-cloud-starter-parent:1.0.0.RELEASE'
+  }
+}
+
+springBoot {
+	requiresUnpack = ['com.netflix.eureka:eureka-core','com.netflix.eureka:eureka-client']
+}
 
 jar {
-    baseName = 'sample-config-server'
+    baseName = 'sample-webservice-registry'
     version =  '0.0.1'
 }
 
@@ -33,9 +45,8 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:${project.bootVersion}")    
     compile("org.springframework.boot:spring-boot-starter-actuator:${project.bootVersion}")
-	compile("org.springframework.cloud:spring-cloud-config-server:1.0.0.RELEASE")
-    
-	
+	compile("org.springframework.cloud:spring-cloud-config-client:${project.cloudVersion}")
+	compile("org.springframework.cloud:spring-cloud-starter-eureka-server:${project.cloudVersion}") 
 
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
