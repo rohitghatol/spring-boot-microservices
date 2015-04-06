@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/rohitghatol/sample-config
+
+server:
+  port: 8888          
