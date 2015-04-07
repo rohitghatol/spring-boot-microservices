@@ -37,9 +37,6 @@ dependencies {
 	compile("org.springframework.cloud:spring-cloud-starter-eureka:${project.cloudVersion}")
 	compile("org.springframework.cloud:spring-cloud-starter-zuul:${project.cloudVersion}")
 	
-    
-    compile("org.apache.tomcat.embed:tomcat-embed-jasper")
-
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rohitghatol.microservices.user.dto.UserDTO;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserController {
 
 	@Value("${mail.domain}")

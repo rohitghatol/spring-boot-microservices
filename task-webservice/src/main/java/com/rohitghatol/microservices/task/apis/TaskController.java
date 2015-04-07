@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rohitghatol.microservices.task.dtos.TaskDTO;
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/")
 public class TaskController {
 
 	private List<TaskDTO> tasks = new ArrayList<TaskDTO>();
