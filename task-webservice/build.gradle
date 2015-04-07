@@ -1,6 +1,7 @@
 buildscript {
 	project.ext {
-        bootVersion = '1.1.4.RELEASE'
+        bootVersion = '1.2.3.RELEASE'
+		cloudVersion = '1.0.0.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -30,11 +31,11 @@ repositories {
 	jcenter()
 }
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web:1.1.4.RELEASE")
-    compile("org.springframework.boot:spring-boot-starter-data-jpa:1.1.4.RELEASE")
-    compile("org.springframework.boot:spring-boot-starter-actuator")
-    
-    compile("org.apache.tomcat.embed:tomcat-embed-jasper")
+    compile("org.springframework.boot:spring-boot-starter-web:${project.bootVersion}")    
+    compile("org.springframework.boot:spring-boot-starter-actuator:${project.bootVersion}")
+	compile("org.springframework.cloud:spring-cloud-config-client:${project.cloudVersion}")
+	compile("org.springframework.cloud:spring-cloud-starter-eureka:${project.cloudVersion}")
+        
 
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'

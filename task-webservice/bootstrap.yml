@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: task-webservice
+    cloud:
+      config:
+       uri: http://localhost:8888
