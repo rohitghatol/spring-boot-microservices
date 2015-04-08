@@ -5,12 +5,19 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
-import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
+import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
 /**
@@ -21,51 +28,70 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 
 	@Autowired
-	private DataSource dataSource;
+	private AuthenticationManager auth;
 
 	@Autowired
-    private AuthenticationManager authenticationManager;
-	
+	private DataSource dataSource;
+
+	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
 	@Bean
-	public TokenStore tokenStore() {
+	public JdbcTokenStore tokenStore() {
 		return new JdbcTokenStore(dataSource);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.springframework.security.oauth2.config.annotation.web.configuration
-	 * .AuthorizationServerConfigurerAdapter#configure(org.springframework.
-	 * security.oauth2.config.annotation.web.configurers.
-	 * AuthorizationServerEndpointsConfigurer)
-	 */
+	@Bean
+	protected AuthorizationCodeServices authorizationCodeServices() {
+		return new JdbcAuthorizationCodeServices(dataSource);
+	}
+
+	@Override
+	public void configure(AuthorizationServerSecurityConfigurer security)
+			throws Exception {
+		security.passwordEncoder(passwordEncoder);
+	}
+
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints)
 			throws Exception {
-		endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore());
-
+		endpoints.authorizationCodeServices(authorizationCodeServices())
+				.authenticationManager(auth).tokenStore(tokenStore())
+				.approvalStoreDisabled();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.springframework.security.oauth2.config.annotation.web.configuration
-	 * .AuthorizationServerConfigurerAdapter#configure(org.springframework.
-	 * security
-	 * .oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer)
-	 */
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients)
 			throws Exception {
-
-		clients.inMemory()
+	
+		clients.jdbc(dataSource)
+				.passwordEncoder(passwordEncoder)
 				.withClient("client")
 				.authorizedGrantTypes("client_credentials", "refresh_token","password")
 				.authorities("ROLE_CLIENT")
 				.resourceIds("apis")
 				.scopes("read")
-				.secret("secret");
+				.secret("secret")
+				.accessTokenValiditySeconds(30);
+	
 	}
+	
+	@Configuration
+	@Order(Ordered.LOWEST_PRECEDENCE - 20)
+	protected static class AuthenticationManagerConfiguration extends
+			GlobalAuthenticationConfigurerAdapter {
+
+		@Autowired
+		private DataSource dataSource;
+
+		@Override
+		public void init(AuthenticationManagerBuilder auth) throws Exception {
+			// @formatter:off
+			auth.jdbcAuthentication().dataSource(dataSource).withUser("dave")
+					.password("secret").roles("USER");
+			// @formatter:on
+		}
+
+	}
+
+	
 }
