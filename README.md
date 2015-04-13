@@ -31,10 +31,17 @@ With Microservices, since each component caters to a somewhat complete business 
 **Decentalized Data Management**
 ![Decentralied Control](http://martinfowler.com/articles/microservices/images/decentralised-data.png)
 
+Disclaimer - While microservices is much talked about these days, make a note Microservices is not a Free lunch. There is an effort and complexity involved to building and running them, but once you do so, the benefits are plentiful.
 
 You can read more about Microservices here - http://martinfowler.com/articles/microservices.html#CharacteristicsOfAMicroserviceArchitecture
 
 Image References from - http://martinfowler.com/articles/microservices.html
+
+## Netflix OSS
+
+Netflix is one of the pioneers behind the Microservices Architecture. Not only have they successfully run Microservices in production, but they have outsourced their battle hardened framework under Netflix Open Source Software Center initiative - http://netflix.github.io/#repo
+
+You will find implementation of numerous of Netflix's Microservices platform pieces here. To name a few Eureka (Service Registry and Discovery framework), Hysrtrix (Circuit Breaker framework), Zuul (API Gatway/Reverse Proxy), Ribbon (Load Balancing Clients) etc are few of these things.
 
 ## Spring Boot Overview
 
