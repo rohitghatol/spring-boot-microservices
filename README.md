@@ -4,6 +4,12 @@ This repository is an example of how to get Microservices going using Spring Boo
 # Table of Content
 * [Microservices Overview](#microservices-overview)
 * [Netflix OSS](#netflix-oss)
+* [Spring Boot Overview](#spring-boot-overview)
+* [Spring Cloud Overview](#spring-cloud-overview)
+* [Spring Cloud Config Overview](#spring-cloud-config-overview)
+* [Spring Cloud Netflix Overview](#spring-cloud-netflix-overview)
+* [OAuth 2.0 Overview](#oauth-2.0-overview)
+* [Spring OAuth 2.0 Overview](#spring-oauth-2.0-overview)
 
 
 ## <a name="microservices-overview"></a>Microservices Overview
@@ -66,16 +72,16 @@ A Microservice environment needs a gateway. A Gateway is the only entity exposed
 ### <img src="http://netflix.github.io/assets/repos/ribbon.png" width="30px"> Ribbon
 Ribbon is a Load Balancing Client and is meant to work with Eureka Server. Ribbon talks to Eureka server and relies on it to get base url to one of the instances of microservice in question. 
 
-## Spring Boot Overview
+## <a name="spring-boot-overview"></a>Spring Boot Overview
 
 
-## Spring Cloud Overview
+## <a name="spring-cloud-overview"></a>Spring Cloud Overview
 
-## Spring Cloud Config Overview
+## <a name="spring-cloud-config-overview"></a>Spring Cloud Config Overview
 
-## Spring Cloud Netflix Overview
+## <a name="spring-cloud-netflix-overview"></a>Spring Cloud Netflix Overview
 
-## OAuth 2.0 Overview
+## <a name="oauth-2.0-overview"></a>OAuth 2.0 Overview
 
-## Spring OAuth2 Overview
+## <a name="spring-oauth-2.0-overview"></a>Spring OAuth2 Overview
 
