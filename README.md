@@ -120,6 +120,12 @@ Running Application
 $>java -jar builds/lib/app.jar
 ```
 
+The idea is to have multiple projects like above, one for each microservice. Look at the following directories in this repo
+* https://github.com/rohitghatol/spring-boot-microservices/tree/master/user-webservice
+* https://github.com/rohitghatol/spring-boot-microservices/tree/master/task-webservice
+* 
+
+
 You can read in detail about Spring Boot here - https://spring.io/guides/gs/spring-boot/
 
 ## <a name="spring-cloud-overview"></a>Spring Cloud Overview
