@@ -1,2 +1,15 @@
-# sprint-boot-micoservices
-Spring Boot Template for Micro services Architecture - Show cases how to use Zuul for API Gateway, Spring OAuth 2.0 as Auth Server, Multiple Resource (Web Services) Servers, Angular Web App, Eureka dor registration and Discover and Hystrix for circuit braker
+# Spring Boot MicroServices Template
+This repository is an example of how to get Microservices going using Spring Boot, Spring Cloud, Spring OAuth 2 and Netflix OSS frameworks.
+
+# Spring Boot Overview
+
+# Spring Cloud Overview
+
+# Spring Cloud Config Overview
+
+# Spring Cloud Netflix Overview
+
+# OAuth 2.0 Overview
+
+# Spring OAuth2 Overview
+
