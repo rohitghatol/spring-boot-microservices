@@ -74,11 +74,51 @@ Ribbon is a Load Balancing Client and is meant to work with Eureka Server. Ribbo
 
 ## <a name="spring-boot-overview"></a>Spring Boot Overview
 
-Folks you are familiar with Spring frameworks like Spring MVC, know spring is all about Dependency Injection and Configuration Management. While Spring is an excellent framework, it still takes quite some effort to make a Spring MVC project ready for production.
+Folks who are familiar with Spring frameworks like Spring MVC, know spring is all about Dependency Injection and Configuration Management. While Spring is an excellent framework, it still takes quite some effort to make a Spring MVC project ready for production.
 
 Spring Boot is Spring's approach towards Convention over Configuration. Spring Boot comes with numerous Start Projects, each starter projects provides a set of conventions which ensures you have a opinionated production ready app.
 
+To begin with Spring Boot allows you to write web services with just One or two classes. See the example below
 
+```
+build.gradle
+gradle dependency --> compile("org.springframework.boot:spring-boot-starter-web")
+```
+
+```
+Application.java
+
+@SpringBootApplication
+public class Application{
+   public static void main(String[] args){
+      SpringApplication.run(Application.class, args);
+   }
+}
+```
+
+```
+UserController.java
+
+@RestController
+public class UserController{
+    @RequestMapping("/")
+    public User getUser(String id) {
+        return new User(id,"firstName","lastName");
+    }
+
+}
+```
+
+Build 
+```
+$>./gradlew clean build
+say this Generates app.jar
+```
+
+Running Application
+```
+$>java -jar builds/lib/app.jar
+```
 
 You can read in detail about Spring Boot here - https://spring.io/guides/gs/spring-boot/
 
