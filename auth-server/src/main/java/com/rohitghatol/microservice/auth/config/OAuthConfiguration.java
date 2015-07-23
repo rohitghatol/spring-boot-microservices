@@ -51,6 +51,14 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 		security.passwordEncoder(passwordEncoder);
 	}
 
+	/**
+	 * We set our authorization storage feature specifying that we would use the
+	 * JDBC store for token and authorization code storage.<br>
+	 * <br>
+	 * 
+	 * We also attach the {@link AuthenticationManager} so that password grants
+	 * can be processed.
+	 */
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints)
 			throws Exception {
@@ -59,6 +67,10 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 				.approvalStoreDisabled();
 	}
 
+	/**
+	 * Setup the client application which attempts to get access to user's
+	 * account after user permission.
+	 */
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients)
 			throws Exception {
@@ -76,6 +88,13 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 	
 	}
 	
+	/**
+	 * Configure the {@link AuthenticationManagerBuilder} with initial
+	 * configuration to setup users.
+	 * 
+	 * @author anilallewar
+	 *
+	 */
 	@Configuration
 	@Order(Ordered.LOWEST_PRECEDENCE - 20)
 	protected static class AuthenticationManagerConfiguration extends

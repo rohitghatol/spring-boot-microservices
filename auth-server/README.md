@@ -54,14 +54,14 @@
   * The authentication credentials are user `dave` and password `secret`. You can add more user if required in the `com.rohitghatol.microservice.auth.config.OAuthConfiguration` class; look at the `AuthenticationManagerConfiguration` inner class for user initialization.
   * After opening an incognito window, paste the following URL(**Note: response_type=code**) in the browser bar
  		```
- 		http://localhost:8899/oauth/authorize?response_type=code&client_id=client&redirect_uri=http://localhost:8090/index.html
+ 		http://localhost:8899/userauth/oauth/authorize?response_type=code&client_id=client&redirect_uri=http://localhost:8090/index.html
  		```
     * Provide authentication information user `dave` and password `secret`.
     * Click on the "Authorize" button to provide permission for the OAuth server to provide token to the client.
     * If you have the [web-portal](../web-portal/README.md) project running, then you should land on the index page with the OAuth code in the URL; something like `http://localhost:8090/index.html?code=5s3OgY#/`
     * Once you have the access code, you can get the actual OAuth access token by making the following POST request using curl.
     ```
-    $ curl client:secret@localhost:8899/oauth/token \
+    $ curl client:secret@localhost:8899/userauth/oauth/token \
     -d grant_type=authorization_code -d client_id=client \
     -d redirect_uri=http://localhost:8090/index.html -d code=5s3OgY
     ```
@@ -74,8 +74,10 @@
   * Implicit grants are used in browser based application when we can't show the client secret on the browser side.
   * After opening an incognito window, paste the following URL(**Note: response_type=token**) in the browser bar. 
   	```
-  	http://localhost:8899/oauth/authorize?response_type=token&client_id=client&redirect_uri=http://localhost:8090/index.html
+  	http://localhost:8899/userauth/oauth/authorize?response_type=token&client_id=client&redirect_uri=http://localhost:8090/index.html
   	```
+   * Provide authentication information user `dave` and password `secret`.
+   * Click on the "Authorize" button to provide permission for the OAuth server to provide token to the client.
   * The response redirect us to the redirect website with the access token in the query string.
   	```	
   	http://localhost:8090/index.html#/access_token=52b48575-f5af-42b7-80bd-6ba69a6297fd&token_type=bearer&expires_in=29&scope=read   
@@ -86,7 +88,7 @@
   * It typically would be used by mobile/desktop application that use a service to get the access token and have implicit access to the user's credentials.
   * Use a client like postman chrome extension to make the POST request for password grant (**Note: grant_type=password**).
   		```
-     	http://localhost:8899/oauth/token?grant_type=password&username=dave&password=secret&redirect_uri=http://localhost:8090/index.html
+     	http://localhost:8899/userauth/oauth/token?grant_type=password&username=dave&password=secret&redirect_uri=http://localhost:8090/index.html
      	```
      	```
      	Use basic authentication in postman and provide the client and client_secret for the basic authentication
@@ -95,7 +97,7 @@
      	``` 
   * The following curl command can be used to verify password grant
   	```
-  	$ curl --request POST -u client:secret "http://localhost:8899/oauth/token?grant_type=password&username=dave&password=secret"
+  	$ curl --request POST -u client:secret "http://localhost:8899/userauth/oauth/token?grant_type=password&username=dave&password=secret"
   	```
   * The response received is
   	```	
@@ -107,7 +109,7 @@
   * This might be required if the application wants to do some book keeping activities (like changing the registered url) or gather statistics.
   * Use a client like postman chrome extension to make the POST request (**Note: grant_type=client_credentials**) for client_credentials grant. Note that **No Auth** should be selected for the authentication scheme since we are bypassing the user here.
   ```
-  http://localhost:8899/oauth/token?grant_type=client_credentials&client_id=client&client_secret=secret
+  http://localhost:8899/userauth/oauth/token?grant_type=client_credentials&client_id=client&client_secret=secret
   ```
 	
 #### refresh token
@@ -116,7 +118,7 @@
   * In this scenario, the application can request another access token from the authorization server by using the refresh token.
   * Assume that we already received the access token for password grant, then we can use the following POST request from chrome postman extension. Note that **grant_type=refresh_token** and you need to provide the refresh_token value that was received in the response for the password grant.
   	```
-  	http://localhost:8899/oauth/token?grant_type=refresh_token&client_id=client&refresh_token=a537af34-a151-4759-94d3-efe1501daf51
+  	http://localhost:8899/userauth/oauth/token?grant_type=refresh_token&client_id=client&refresh_token=a537af34-a151-4759-94d3-efe1501daf51
   	``` 
   	```
      	Use basic authentication in postman and provide the client and client_secret for the basic authentication
