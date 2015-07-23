@@ -66,7 +66,8 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 		clients.jdbc(dataSource)
 				.passwordEncoder(passwordEncoder)
 				.withClient("client")
-				.authorizedGrantTypes("client_credentials", "refresh_token","password")
+				.authorizedGrantTypes("authorization_code", "client_credentials", 
+						"refresh_token","password", "implicit")
 				.authorities("ROLE_CLIENT")
 				.resourceIds("apis")
 				.scopes("read")
@@ -88,6 +89,8 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 			// @formatter:off
 			auth.jdbcAuthentication().dataSource(dataSource).withUser("dave")
 					.password("secret").roles("USER");
+			auth.jdbcAuthentication().dataSource(dataSource).withUser("anil")
+					.password("password").roles("ADMIN");
 			// @formatter:on
 		}
 
