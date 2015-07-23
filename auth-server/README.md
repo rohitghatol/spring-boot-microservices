@@ -101,7 +101,7 @@
   	```	
 	{"access_token":"61f349c2-2f08-465a-948d-ccbc25e79c7c","token_type":"bearer","refresh_token":"a537af34-a151-4759-94d3-efe1501daf51","expires_in":29,"scope":"read"}
 	```
-	   	
+	
 #### Client credentials
   * The client credential grant is used by the client themselves to get an access token without the context of the user involved.
   * This might be required if the application wants to do some book keeping activities (like changing the registered url) or gather statistics.
@@ -122,7 +122,8 @@
      	Use basic authentication in postman and provide the client and client_secret for the basic authentication
      	Username - client
      	Password - secret
-    ``` 	
+    ``` 
+    
 ### Getting protected resources
 * Once you have the access token, put the value in a header called "Authorization" and value as "Bearer &lt;access_token_value&gt; and make the request.
 	```     	
