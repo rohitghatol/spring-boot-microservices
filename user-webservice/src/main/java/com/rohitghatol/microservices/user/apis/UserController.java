@@ -20,16 +20,16 @@ public class UserController {
 	
 	private List<UserDTO> users= new ArrayList<UserDTO>();
 	
-	
-	
 	@RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<UserDTO> getUsers(){
 		users= new ArrayList<UserDTO>();
-		users.add(new UserDTO("firstName", "lastName", "1", "first.last@"+mailDomain));
+		users.add(new UserDTO("firstName1", "lastName1", "1", "first1.last1@"+mailDomain));
+		users.add(new UserDTO("firstName2", "lastName2", "2", "first2.last2@"+mailDomain));
 		return users;
 	}
+	
 	@RequestMapping(value = "{userName}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public UserDTO getUserByUserName(@PathVariable("userName") String userName){
-		return new UserDTO("firstName", "lastName", "1", "first.last@"+mailDomain);
+		return new UserDTO("firstNameDetails", "lastNameDetails", "1", "first.last@"+mailDomain);
 	}
 }

@@ -16,11 +16,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  * @author rohitghatol
  */
 
-@Configuration
 @ComponentScan
 @EnableAutoConfiguration
 @EnableEurekaClient
-@EnableResourceServer
 public class Application {
 
 	/**

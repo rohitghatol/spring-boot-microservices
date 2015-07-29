@@ -6,6 +6,7 @@ angular.module('oauthApp')
             var assignAuthenticationStatus = function (data) {
                 if (data.name) {
                     $rootScope.userAuthenticated = true;
+                    $rootScope.loggedInUserName = data.name;
                 } else {
                     $rootScope.userAuthenticated = false;
                 }
@@ -14,7 +15,7 @@ angular.module('oauthApp')
             var handleError = function (error) {
                 console.log(error);
                 $rootScope.userAuthenticated = false;
-            })
+            };
 
         dataService.getLoggedInUser().then(assignAuthenticationStatus, handleError);
     }]);

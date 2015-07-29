@@ -56,6 +56,14 @@ distDocker {
     exposePort 8080
 }
 
+bootRun {
+    jvmArgs = ['-Xdebug', '-Xrunjdwp:server=y,transport=dt_socket,address=4200,suspend=n','-Dspring.profiles.active=dev']
+}
+
+run {
+    jvmArgs = ['-Xdebug', '-Xrunjdwp:server=y,transport=dt_socket,address=4200,suspend=n','-Dspring.profiles.active=dev']
+}
+
 task createWrapper(type: Wrapper) {
     gradleVersion = '2.0'
 }

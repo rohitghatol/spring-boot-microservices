@@ -10,18 +10,18 @@
 }
 </style>
 </head>
-<body ng-app="oauthApp" ng-cloak>
-	<div ng-controller="navigationCtrl" class="container">
+<body data-ng-app="oauthApp" data-ng-cloak>
+	<div data-ng-controller="navigationCtrl" class="container">
 		<ul class="nav nav-pills" role="tablist">
 			<li class="{active:tab('home')}"><a href="#/">home</a></li>
 			<li><a href="login">login</a></li>
 			<li><a href="#/user">user</a></li>
 			<li><a href="#/task">task</a></li>
-			<li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
+			<li data-ng-show="userAuthenticated"><a href="" data-ng-click="logout()">logout</a></li>
 		</ul>
 	</div>
 	
-	<div ng-view class="container"></div>
+	<div data-ng-view class="container"></div>
 	
 	<script type="text/javascript" src="js/libs/angular.min.js"></script>
 	<script type="text/javascript" src="js/libs/angular-route.min.js"></script>

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  *
  */
 @Configuration
-@Component
+@EnableResourceServer
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 	@Override 
     public void configure(HttpSecurity http) throws Exception {

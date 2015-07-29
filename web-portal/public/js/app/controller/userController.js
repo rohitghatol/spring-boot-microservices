@@ -27,6 +27,7 @@ angular.module('oauthApp')
             
         // Method exposed to get specific user data
         this.getUserDataByUserName = function (userName) {
+            console.log("Got request to load data for: " + userName);
         	dataService.getUserDataByUserName(userName)
         		.then(assignUserDataToScope, logError);
         };   

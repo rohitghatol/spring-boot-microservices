@@ -19,12 +19,13 @@ public class TaskController {
 	@RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<TaskDTO> getTasks() {
 		tasks = new ArrayList<TaskDTO>();
-		tasks.add(new TaskDTO("task", "description"));
+		tasks.add(new TaskDTO("task1", "description1"));
+		tasks.add(new TaskDTO("task2", "description2"));
 		return tasks;
 	}
 
 	@RequestMapping(value = "{taskId}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public TaskDTO getUserByUserName(@PathVariable("taskId") String taskId) {
-		return new TaskDTO("task", "description");
+		return new TaskDTO("taskDetails", "descriptionDetails");
 	}
 }
