@@ -11,7 +11,7 @@ buildscript {
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${project.bootVersion}"
         classpath 'se.transmode.gradle:gradle-docker:1.2'
-		classpath "io.spring.gradle:dependency-management-plugin:0.4.0.RELEASE"
+		classpath "io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE"
     }
 }
 

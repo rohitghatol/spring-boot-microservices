@@ -3,7 +3,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/rohitghatol/sample-config
+          uri: https://github.com/anilallewar/sample-config
 
 server:
   port: 8888          

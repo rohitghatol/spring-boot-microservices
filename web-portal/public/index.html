@@ -1,7 +1,34 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html>
-
-<body>
-<h1>Web Portal</h1>
+<head>
+<title>OAuth Demo with bootstrap</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<style type="text/css">
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak,
+	.x-ng-cloak {
+	display: none !important;
+}
+</style>
+</head>
+<body ng-app="oauthApp" ng-cloak>
+	<div ng-controller="navigationCtrl" class="container">
+		<ul class="nav nav-pills" role="tablist">
+			<li class="{active:tab('home')}"><a href="#/">home</a></li>
+			<li><a href="login">login</a></li>
+			<li><a href="#/user">user</a></li>
+			<li><a href="#/task">task</a></li>
+			<li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
+		</ul>
+	</div>
+	
+	<div ng-view class="container"></div>
+	
+	<script type="text/javascript" src="js/libs/angular.min.js"></script>
+	<script type="text/javascript" src="js/libs/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/app/oauthapp.js"></script>
+	<script type="text/javascript" src="js/app/controller/userController.js"></script>
+	<script type="text/javascript" src="js/app/controller/navController.js"></script>
+    <script type="text/javascript" src="js/app/controller/homeController.js"></script>
+	<script type="text/javascript" src="js/app/services/dataservice.js"></script>
 </body>
 </html>

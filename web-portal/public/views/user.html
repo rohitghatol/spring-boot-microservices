@@ -1,0 +1,11 @@
+<div>
+	<h1>User Data</h1>
+	<div ng-repeat="user in userDataArray">
+		<a href="#" ng-click="getUserDataByUserName({{user.userName}})">{{user.firstName}}
+			{{user.lastName}}</a>
+	</div>
+	<div ng-show="userData">
+		<span>{{userData.firstName}}</span> <span>{{userData.lastName}}</span>
+		<span>{{userData.emailAddress}}</span>
+	</div>
+</div>

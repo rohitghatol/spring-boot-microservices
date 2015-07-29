@@ -34,14 +34,15 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:${project.bootVersion}")    
     compile("org.springframework.boot:spring-boot-starter-actuator:${project.bootVersion}")
-	compile("org.springframework.boot:spring-boot-starter-security:${project.bootVersion}")
 	compile("org.springframework.boot:spring-boot-starter-data-jpa:${project.bootVersion}")
 	compile("mysql:mysql-connector-java:5.1.30")
 	compile("org.springframework.cloud:spring-cloud-config-client:${project.cloudVersion}")
 	compile("org.springframework.cloud:spring-cloud-starter-eureka:${project.cloudVersion}")	
-	compile("org.springframework.security.oauth:spring-security-oauth2:${project.seurityVersion}")
 	compile("org.springframework.cloud:spring-cloud-starter-eureka:${project.cloudVersion}")
 	
+	compile("org.springframework.cloud:spring-cloud-starter-security:${project.cloudVersion}")
+	compile("org.springframework.boot:spring-boot-starter-security:${project.bootVersion}")
+	compile("org.springframework.security.oauth:spring-security-oauth2:${project.seurityVersion}")
 	
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
