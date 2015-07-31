@@ -7,7 +7,12 @@ angular.module('oauthApp', ['ngRoute'])
             controller: 'homeCtrl'
         }).when('/user', {
             templateUrl: 'views/user.html',
-            controller: 'userCtrl'
+            controller: 'userCtrl',
+            controllerAs: 'userController'
+        }).when('/task', {
+            templateUrl: 'views/task.html',
+            controller: 'taskCtrl',
+            controllerAs: 'taskController'
         }).otherwise('/');
     
         //Custom header is needed starting angular 1.3; else Spring security might pop authentication dialog

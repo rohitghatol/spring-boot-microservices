@@ -21,6 +21,9 @@ public class TaskDTO {
 	/** The completed. */
 	private boolean completed;
 
+	/** The user name with whom the task is associated. */
+	private String userName;
+	
 	/**
 	 * Instantiates a new task dto.
 	 */
@@ -35,11 +38,12 @@ public class TaskDTO {
 	 * @param taskId the task id
 	 * @param description the description
 	 */
-	public TaskDTO(String taskId, String description) {
+	public TaskDTO(String taskId, String description, String userName) {
 		super();
 		this.taskId = taskId;
 		this.description = description;
 		this.completed = false;
+		this.userName = userName;
 	}
 
 	/**
@@ -96,6 +100,21 @@ public class TaskDTO {
 		this.completed = completed;
 	}
 
+	
+	/**
+	 * @return the userName
+	 */
+	public String getUserName() {
+		return userName;
+	}
+
+	/**
+	 * @param userName the userName to set
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -104,9 +123,9 @@ public class TaskDTO {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (completed ? 1231 : 1237);
-		result = prime * result
-				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((taskId == null) ? 0 : taskId.hashCode());
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
 
@@ -134,6 +153,11 @@ public class TaskDTO {
 				return false;
 		} else if (!taskId.equals(other.taskId))
 			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
+			return false;
 		return true;
 	}
 
@@ -143,7 +167,7 @@ public class TaskDTO {
 	@Override
 	public String toString() {
 		return "TaskDTO [taskId=" + taskId + ", description=" + description
-				+ ", completed=" + completed + "]";
+				+ ", completed=" + completed + ", userName=" + userName + "]";
 	}
 
 }

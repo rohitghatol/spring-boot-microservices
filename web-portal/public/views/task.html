@@ -1,0 +1,39 @@
+<div>
+	<h1>Task Summary</h1>
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr class="success">
+                <th>ID</th>
+                <th>Description</th>
+                <th>Completed</th>
+            </tr>
+            <tr data-ng-repeat="task in taskDataArray">
+                <td> <a href="" id="{{task.taskId}}" 
+                        data-ng-click="taskController.getTaskDataByTaskId(task.taskId)">{{task.taskId}}</a></td>
+                <td><span>{{task.description}}</span></td>
+                <td><span>{{task.completed}}</span></td>
+            </tr>
+        </table>
+    </div>
+    
+	<div data-ng-show="taskData">
+        <h1>Task Details</h1>
+        
+        <table class="table table-striped">
+            <tr class="info">
+                <th>ID</th>
+                <th>Description</th>
+                <th>Completed</th>
+                <th>User Name</th>
+            </tr>
+            <tr>
+                <td><span>{{taskData.taskId}}</span></td>
+                <td><span>{{taskData.description}}</span></td>
+                <td><span>{{taskData.completed}}</span></td>
+                <td><span>{{taskData.userName}}</span></td>
+            </tr>
+        </table>
+	</div>
+    
+</div>
