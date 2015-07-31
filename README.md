@@ -129,13 +129,44 @@ You can read in detail about Spring Boot here - https://spring.io/guides/gs/spri
 
 ## <a name="spring-cloud-overview"></a>Spring Cloud Overview
 
+Spring Cloud provides tools for developers to quickly build some of the common patterns in distributed systems (e.g. configuration management, service discovery, circuit breakers, intelligent routing, micro-proxy, control bus, one-time tokens, global locks, leadership election, distributed sessions, cluster state)
 
+You can read in detail about Spring Cloud here - http://projects.spring.io/spring-cloud/
 
 ## <a name="spring-cloud-config-overview"></a>Spring Cloud Config Overview
 
+Spring Cloud config provides support for externalizing configuration in distributed systems. With the Config Server you have a central place to manage external properties for applications across all environments.
+
+You can read in detail about Spring Cloud config here - http://cloud.spring.io/spring-cloud-config/
+
 ## <a name="spring-cloud-netflix-overview"></a>Spring Cloud Netflix Overview
+
+Spring Cloud Netflix provides Netflix OSS integrations for Spring Boot apps through autoconfiguration and binding to the Spring Environment and other Spring programming model idioms.
+
+You can read in detail about Spring Cloud Netflix here - http://cloud.spring.io/spring-cloud-netflix/
 
 ## <a name="oauth-2.0-overview"></a>OAuth 2.0 Overview
 
+OAuth2 is an authorization framework that specifies different ways a third-party application can obtain limited access to determined set of resources. 
+
+![OAuth2 abstract protocol](/images/OAuth2 abstract protocol flow.png)
+
+OAuth defines four roles:
+
+   **resource owner:**
+      An entity capable of granting access to a protected resource. When the resource owner is a person, it is referred to as an end-user.
+
+   **resource server:**
+      The server hosting the protected resources, capable of accepting and responding to protected resource requests using access tokens.
+
+   **client:**
+      An application making protected resource requests on behalf of the resource owner and with its authorization.  The term "client" does not imply any particular implementation characteristics (e.g., whether the application executes on a server, a desktop, or other devices).
+
+   **authorizationserver:**
+      The server issuing access tokens to the client after successfully authenticating the resource owner and obtaining authorization.
+      
+To get more details of how differnt authorizations work in OAuth2, please refer to the readme at **[auth-server](auth-server/README.md)**
+
 ## <a name="spring-oauth-2.0-overview"></a>Spring OAuth2 Overview
 
+Spring provides nice integration between Spring security and OAuth2 providers including the ability to setup your own authorization server. Please see [Spring security with OAuth2](http://projects.spring.io/spring-security-oauth/docs/oauth2.html) for more details. 
