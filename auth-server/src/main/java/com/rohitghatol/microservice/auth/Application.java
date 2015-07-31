@@ -11,7 +11,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 /**
- * The Main Spring Boot Application class.
+ * The Main Spring Boot Application class that starts the authorization
+ * server.</br>
+ * </br>
+ * 
+ * Note that the server is also a Eureka client so as to register with the
+ * Eureka server and be auto-discovered by other Eureka clients.
  *
  * @author rohitghatol
  */
