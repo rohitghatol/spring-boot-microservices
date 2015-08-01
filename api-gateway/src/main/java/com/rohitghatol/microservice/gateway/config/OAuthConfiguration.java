@@ -19,6 +19,9 @@ public class OAuthConfiguration extends OAuth2SsoConfigurerAdapter {
 		matchers.anyRequest();
 	}
 	
+	/**
+	 * Define the security that applies to the proxy
+	 */
 	@Override
     public void configure(HttpSecurity http) throws Exception {
         http

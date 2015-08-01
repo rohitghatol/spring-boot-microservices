@@ -2,6 +2,7 @@
 This repository is an example of how to get Microservices going using Spring Boot, Spring Cloud, Spring OAuth 2 and Netflix OSS frameworks.
 
 # Table of Content
+* [Using the application] (#using-application)
 * [Microservices Overview](#microservices-overview)
 * [Netflix OSS](#netflix-oss)
 * [Spring Boot Overview](#spring-boot-overview)
@@ -11,6 +12,23 @@ This repository is an example of how to get Microservices going using Spring Boo
 * [OAuth 2.0 Overview](#oauth-2.0-overview)
 * [Spring OAuth 2.0 Overview](#spring-oauth-2.0-overview)
 
+## <a name="using-application"></a>Using the application
+
+The application consists of 7 different services 
+
+* [config server](config-server/README.md) - setup external configuration
+* [webserver-registry](webserver-registry/README.md) - Eureka server
+* [auth-server](auth-server/README.md) - Oauth2 authorization server
+* [user-webservice](user-webservice/README.md) - User micro-service
+* [task-webservice](task-webservice/README.md) - Task micro-service
+* [api-gateway](api-gateway/README.md) - API gateway that proxies all the micro-services
+* [web-portal](web-portal/README.md) - Single Page Application that provides the UI
+
+Please refer to the individual readme files on instructions of how to run the services. 
+
+Note:
+* If the gradle wrapper doesn't work, then install gradle and run `gradle wrapper` before using `gradlew`.
+* If you need to setup the classpath correctly, then run `./gradlew clean build eclipse` which would setup the `.classpath` accordingly.
 
 ## <a name="microservices-overview"></a>Microservices Overview
 

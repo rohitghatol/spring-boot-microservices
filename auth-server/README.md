@@ -37,16 +37,19 @@
     * Start the mysql container again by using the `docker run -d -e........` command specified above.
              			
 ### Projects that need to be started before
-* [config server](../config-server/README.md) - For pulling the configuration information
-* [webserver-registry](../webserver-registry/README.md) - For starting the Eureka server since the authorization server also is a micro-service that needs to be registered with Eureka server.           	
+* [config server](/../config-server/README.md) - For pulling the configuration information
+* [webserver-registry](/../webserver-registry/README.md) - For starting the Eureka server since the authorization server also is a micro-service that needs to be registered with Eureka server.           	
 
 ### Running the application
 * Build the application by running the `./gradlew clean build` gradle command at the "auth-server" project root folder	on the terminal.
 * Run the application using either of the 2 below
   * If you want to run the application in debug mode, then `./gradlew bootRun`; this would start the debugger at port 4100 that can be connected as remote java application.
-  * If you want to run the application as jar file, then `java -jar build/libs/sample-auth-server-0.0.1.jar'
+  * If you want to run the application as jar file, then `java -jar build/libs/sample-auth-server-0.0.1.jar`
   * When testing the authentication and authorization flow, ensure that you don't have cookies and HTTP basic credentials stored in the browser cache. The simplest way to do that say in `Chrome` is to open a new `incognito window`.
   
+## External Configuration
+Please refer to [user webservice](/../user-webservice/README.md) for details on how the external configuration works. Note that there is separate configuration file for each Spring application; the application should refer to it's own .yml file for configuration.
+
 ### Testing different authorization grant types  	
 #### Authorization code 
   * This flow is typically used by web server apps(server-to-server communication) to authorize the user and then get the token using POST from the server.

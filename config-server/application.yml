@@ -9,5 +9,7 @@ spring:
           
 #           uri: file://Users/anilallewar/Documents/Anil Allewar/Trainings/Code Samples/Enterprise Java/Micro Services/sample-config
 
+# Defines the port where the config server is running so that rest of the services can pick up 
+# their external configurations
 server:
   port: 8888          
