@@ -17,7 +17,7 @@ This repository is an example of how to get Microservices going using Spring Boo
 The application consists of 7 different services 
 
 * [config server](config-server/README.md) - setup external configuration
-* [webserver-registry](webserver-registry/README.md) - Eureka server
+* [webservice-registry](webservice-registry/README.md) - Eureka server
 * [auth-server](auth-server/README.md) - Oauth2 authorization server
 * [user-webservice](user-webservice/README.md) - User micro-service
 * [task-webservice](task-webservice/README.md) - Task micro-service
