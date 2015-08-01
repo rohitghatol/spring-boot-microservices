@@ -6,7 +6,7 @@ This application provides the **user** related functionality and serves as one c
 
 ### Projects that need to be started before
 * [config server](/../../blob/master/config-server/README.md) - For pulling the configuration information
-* [webserver-registry](/../../webservice-registry/README.md) - For starting the Eureka server since the authorization server also is a micro-service that needs to be registered with Eureka server.    
+* [webservice-registry](/../../blob/master/webservice-registry/README.md) - For starting the Eureka server since the authorization server also is a micro-service that needs to be registered with Eureka server.    
 
 ### Running the application
 * Build the application by running the `./gradlew clean build` gradle command at the "user-webservice" project root folder	on the terminal.
