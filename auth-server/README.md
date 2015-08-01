@@ -37,8 +37,8 @@
     * Start the mysql container again by using the `docker run -d -e........` command specified above.
              			
 ### Projects that need to be started before
-* [config server](/../../config-server/README.md) - For pulling the configuration information
-* [webserver-registry](/../../webserver-registry/README.md) - For starting the Eureka server since the authorization server also is a micro-service that needs to be registered with Eureka server.           	
+* [config server](config-server/README.md) - For pulling the configuration information
+* [webserver-registry](webserver-registry/README.md) - For starting the Eureka server since the authorization server also is a micro-service that needs to be registered with Eureka server.           	
 
 ### Running the application
 * Build the application by running the `./gradlew clean build` gradle command at the "auth-server" project root folder	on the terminal.
@@ -48,7 +48,7 @@
   * When testing the authentication and authorization flow, ensure that you don't have cookies and HTTP basic credentials stored in the browser cache. The simplest way to do that say in `Chrome` is to open a new `incognito window`.
   
 ## External Configuration
-Please refer to [user webservice](/../../user-webservice/README.md) for details on how the external configuration works. Note that there is separate configuration file for each Spring application; the application should refer to it's own .yml file for configuration.
+Please refer to [user webservice](user-webservice/README.md) for details on how the external configuration works. Note that there is separate configuration file for each Spring application; the application should refer to it's own .yml file for configuration.
 
 ### Testing different authorization grant types  	
 #### Authorization code 
