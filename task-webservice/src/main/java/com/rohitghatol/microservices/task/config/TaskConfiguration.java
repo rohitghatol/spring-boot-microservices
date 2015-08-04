@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
-import org.springframework.stereotype.Component;
 
 /**
  * Resource server configuration defining what endpoints are protected.
@@ -27,12 +26,20 @@ public class TaskConfiguration extends ResourceServerConfigurerAdapter {
 	 */
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
+		// @formatter:off
 		http.requestMatchers()
 			.antMatchers("/**")
 		.and()
 			.authorizeRequests()
 				.anyRequest()
-					.authenticated();
+					.authenticated()
+					.antMatchers(HttpMethod.GET, "/**").access("#oauth2.hasScope('read')")
+		            .antMatchers(HttpMethod.OPTIONS, "/**").access("#oauth2.hasScope('read')")
+		            .antMatchers(HttpMethod.POST, "/**").access("#oauth2.hasScope('write')")
+		            .antMatchers(HttpMethod.PUT, "/**").access("#oauth2.hasScope('write')")
+		            .antMatchers(HttpMethod.PATCH, "/**").access("#oauth2.hasScope('write')")
+		            .antMatchers(HttpMethod.DELETE, "/**").access("#oauth2.hasScope('write')");
+		// @formatter:on
 	}
 
 	/**
