@@ -3,7 +3,14 @@
  */
 package com.rohitghatol.microservices.comments.dtos;
 
+import java.io.IOException;
 import java.util.Date;
+
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * Represents comments on Task.
@@ -77,6 +84,7 @@ public class CommentDTO {
 	/**
 	 * @return the posted
 	 */
+	@JsonSerialize(using = CustomDateToLongSerializer.class)
 	public Date getPosted() {
 		return posted;
 	}
@@ -146,4 +154,19 @@ public class CommentDTO {
 		return "CommentDTO [taskId=" + taskId + ", comment=" + comment + ", posted=" + posted + "]";
 	}
 
+}
+
+/**
+ * Custom date serializer that converts the date to long before sending it out
+ * 
+ * @author anilallewar
+ *
+ */
+class CustomDateToLongSerializer extends JsonSerializer<Date> {
+
+	@Override
+	public void serialize(Date value, JsonGenerator jgen, SerializerProvider provider)
+			throws IOException, JsonProcessingException {
+		jgen.writeNumber(value.getTime());
+	}
 }

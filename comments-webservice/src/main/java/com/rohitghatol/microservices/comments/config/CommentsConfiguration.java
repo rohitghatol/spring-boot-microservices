@@ -32,7 +32,13 @@ public class CommentsConfiguration extends ResourceServerConfigurerAdapter {
 		.and()
 			.authorizeRequests()
 				.anyRequest()
-					.authenticated();
+					.authenticated()
+					.antMatchers(HttpMethod.GET, "/**").access("#oauth2.hasScope('read')")
+		            .antMatchers(HttpMethod.OPTIONS, "/**").access("#oauth2.hasScope('read')")
+		            .antMatchers(HttpMethod.POST, "/**").access("#oauth2.hasScope('write')")
+		            .antMatchers(HttpMethod.PUT, "/**").access("#oauth2.hasScope('write')")
+		            .antMatchers(HttpMethod.PATCH, "/**").access("#oauth2.hasScope('write')")
+		            .antMatchers(HttpMethod.DELETE, "/**").access("#oauth2.hasScope('write')");
 		// @formatter:on
 	}
 

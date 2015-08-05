@@ -1,0 +1,15 @@
+<div data-ng-show="taskComments">
+    <h1>Task Comments</h1>
+    <table class="table table-striped">
+        <tr class="info">
+            <th>ID</th>
+            <th>Comment</th>
+            <th>Date</th>
+        </tr>
+        <tr data-ng-repeat="comment in taskComments">
+            <td><span>{{comment.taskId}}</span></td>
+            <td><span>{{comment.comment}}</span></td>
+            <td><span>{{comment.posted}}</span></td>
+        </tr>
+    </table>
+</div>

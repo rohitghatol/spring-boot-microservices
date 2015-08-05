@@ -117,7 +117,7 @@ class CommentsCollectionDeserializer extends JsonDeserializer<CommentCollectionR
 				commentResource = new CommentResource();
 				commentResource.setTaskId(childNode.get(CommentResource.JP_TASKID).asText());
 				commentResource.setComment(childNode.get(CommentResource.JP_COMMENT).asText());
-				commentResource.setPosted(new Date(childNode.get(CommentResource.JP_TASKID).asLong()));
+				commentResource.setPosted(new Date(childNode.get(CommentResource.JP_POSTED).asLong()));
 
 				commentArrayResource.addComment(commentResource);
 			}
