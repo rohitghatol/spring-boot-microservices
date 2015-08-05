@@ -2,6 +2,8 @@
 
 This application provides the **task** related functionality and serves as one component. It defines the REST endpoints that are used to provide task functionality.
 
+This micro-service also provides an example of to call another OAuth2 protected service from within this service using OAuth2 client configuration. The OAuth2 bearer token that has been passed to the task service is propogated to the "comments" service to get the comments for the given task.
+
 ##Pre-requisites
 
 ### Projects that need to be started before
