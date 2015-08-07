@@ -39,6 +39,7 @@ dependencies {
 	compile("org.springframework.cloud:spring-cloud-config-client:${project.cloudVersion}")
 	compile("org.springframework.cloud:spring-cloud-starter-eureka:${project.cloudVersion}")
 	compile("org.springframework.cloud:spring-cloud-starter-zuul:${project.cloudVersion}")
+	compile("org.springframework.cloud:spring-cloud-starter-security:${project.cloudVersion}")
 	
 	compile("org.springframework.boot:spring-boot-starter-security:${project.bootVersion}")
 	compile("org.springframework.security.oauth:spring-security-oauth2:${project.seurityVersion}")

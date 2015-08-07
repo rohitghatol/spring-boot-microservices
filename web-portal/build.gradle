@@ -20,7 +20,7 @@ apply plugin: 'spring-boot'
 apply plugin: 'java'
 apply plugin: 'docker'
 
-
+mainClassName = 'com.rohitghatol.microservices.portal.Application'
 
 jar {
     baseName = 'sample-web-portal'
@@ -46,6 +46,9 @@ group = 'rohitghatol'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
+bootRun {
+	jvmArgs = ['-Xdebug', '-Xrunjdwp:server=y,transport=dt_socket,address=4010,suspend=n','-Dspring.profiles.active=dev']
+}
 
 distDocker {
     exposePort 8080

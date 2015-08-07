@@ -1,0 +1,39 @@
+<div>
+	<h1>User Summary</h1>
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr class="success">
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            <tr data-ng-repeat="user in userDataArray">
+                <td> <a href="" id="{{user.userName}}" 
+                        data-ng-click="userController.getUserDataByUserName(user.userName)">{{user.userName}}</a></td>
+                <td><span>{{user.firstName}}</span></td>
+                <td><span>{{user.lastName}}</span></td>
+            </tr>
+        </table>
+    </div>
+    
+	<div data-ng-show="userData">
+        <h1>User Details</h1>
+        
+        <table class="table table-striped">
+            <tr class="info">
+                <th>ID</th>
+                <th>First Name</th>
+                <th>LastName</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td><span>{{userData.userName}}</span></td>
+                <td><span>{{userData.firstName}}</span></td>
+                <td><span>{{userData.lastName}}</span></td>
+                <td><span>{{userData.emailAddress}}</span></td>
+            </tr>
+        </table>
+	</div>
+    
+</div>
