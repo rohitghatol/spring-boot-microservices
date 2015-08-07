@@ -1,5 +1,10 @@
 # Auth-Server
 
+## Introduction
+This service acts as the authetication and authorization service for the ecosystem of micro-services that we developed. Since each micro-service needs to authenticate the user, we provide a "/me" endpoint exposed by the auth-server that provides the logged in user.
+
+This is ok for development/demo purposes but would lead to lots of chitchat since each micro-service needs to call the "/me" endpoint to authenticate the user. In typical production scenario, prefer to use a JWT (Json Web Token) wherein the token itself contains enough information for the resource server to do simple user authentication. The "/me" enpoint still needs to be used by the browser to see if the user is authenticated or not; but is not required in intra-service communication.
+
 ## Prerequistes
 
 ### Setting Authentication Schema Information

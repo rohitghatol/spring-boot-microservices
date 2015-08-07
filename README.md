@@ -2,7 +2,8 @@
 This repository is an example of how to get Microservices going using Spring Boot, Spring Cloud, Spring OAuth 2 and Netflix OSS frameworks.
 
 # Table of Content
-* [Using the application] (#using-application)
+* [Contributors](#contributors)
+* [Using the application](#using-application)
 * [Microservices Overview](#microservices-overview)
 * [Netflix OSS](#netflix-oss)
 * [Spring Boot Overview](#spring-boot-overview)
@@ -11,6 +12,11 @@ This repository is an example of how to get Microservices going using Spring Boo
 * [Spring Cloud Netflix Overview](#spring-cloud-netflix-overview)
 * [OAuth 2.0 Overview](#oauth-2.0-overview)
 * [Spring OAuth 2.0 Overview](#spring-oauth-2.0-overview)
+
+## <a name="contributors"></a>Contributors
+
+* [Rohit Ghatol](https://www.linkedin.com/in/rohitghatol)
+* [Anil Allewar](https://www.linkedin.com/pub/anil-allewar/18/378/393)
 
 ## <a name="using-application"></a>Using the application
 
@@ -21,10 +27,11 @@ The application consists of 7 different services
 * [auth-server](auth-server/README.md) - Oauth2 authorization server
 * [user-webservice](user-webservice/README.md) - User micro-service
 * [task-webservice](task-webservice/README.md) - Task micro-service
+* [comments-webservice](comments-webservice/README.md) - Comments for task micro-service
 * [api-gateway](api-gateway/README.md) - API gateway that proxies all the micro-services
 * [web-portal](web-portal/README.md) - Single Page Application that provides the UI
 
-Please refer to the individual readme files on instructions of how to run the services. 
+Please refer to the individual readme files on instructions of how to run the services. For demo, you can run the applications in the same order listed above.
 
 Note:
 * If the gradle wrapper doesn't work, then install gradle and run `gradle wrapper` before using `gradlew`.
