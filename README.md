@@ -2,6 +2,8 @@
 This repository is an example of how to get Microservices going using Spring Boot, Spring Cloud, Spring OAuth 2 and Netflix OSS frameworks.
 
 # Table of Content
+* [Contributors](#contributors)
+* [Using the application](#using-application)
 * [Microservices Overview](#microservices-overview)
 * [Netflix OSS](#netflix-oss)
 * [Spring Boot Overview](#spring-boot-overview)
@@ -11,6 +13,29 @@ This repository is an example of how to get Microservices going using Spring Boo
 * [OAuth 2.0 Overview](#oauth-2.0-overview)
 * [Spring OAuth 2.0 Overview](#spring-oauth-2.0-overview)
 
+## <a name="contributors"></a>Contributors
+
+* [Rohit Ghatol](https://www.linkedin.com/in/rohitghatol)
+* [Anil Allewar](https://www.linkedin.com/pub/anil-allewar/18/378/393)
+
+## <a name="using-application"></a>Using the application
+
+The application consists of 7 different services 
+
+* [config server](config-server/README.md) - setup external configuration
+* [webservice-registry](webservice-registry/README.md) - Eureka server
+* [auth-server](auth-server/README.md) - Oauth2 authorization server
+* [user-webservice](user-webservice/README.md) - User micro-service
+* [task-webservice](task-webservice/README.md) - Task micro-service
+* [comments-webservice](comments-webservice/README.md) - Comments for task micro-service
+* [api-gateway](api-gateway/README.md) - API gateway that proxies all the micro-services
+* [web-portal](web-portal/README.md) - Single Page Application that provides the UI
+
+Please refer to the individual readme files on instructions of how to run the services. For demo, you can run the applications in the same order listed above.
+
+Note:
+* If the gradle wrapper doesn't work, then install gradle and run `gradle wrapper` before using `gradlew`.
+* If you need to setup the classpath correctly, then run `./gradlew clean build eclipse` which would setup the `.classpath` accordingly.
 
 ## <a name="microservices-overview"></a>Microservices Overview
 
@@ -129,13 +154,44 @@ You can read in detail about Spring Boot here - https://spring.io/guides/gs/spri
 
 ## <a name="spring-cloud-overview"></a>Spring Cloud Overview
 
+Spring Cloud provides tools for developers to quickly build some of the common patterns in distributed systems (e.g. configuration management, service discovery, circuit breakers, intelligent routing, micro-proxy, control bus, one-time tokens, global locks, leadership election, distributed sessions, cluster state)
 
+You can read in detail about Spring Cloud here - http://projects.spring.io/spring-cloud/
 
 ## <a name="spring-cloud-config-overview"></a>Spring Cloud Config Overview
 
+Spring Cloud config provides support for externalizing configuration in distributed systems. With the Config Server you have a central place to manage external properties for applications across all environments.
+
+You can read in detail about Spring Cloud config here - http://cloud.spring.io/spring-cloud-config/
+
 ## <a name="spring-cloud-netflix-overview"></a>Spring Cloud Netflix Overview
+
+Spring Cloud Netflix provides Netflix OSS integrations for Spring Boot apps through autoconfiguration and binding to the Spring Environment and other Spring programming model idioms.
+
+You can read in detail about Spring Cloud Netflix here - http://cloud.spring.io/spring-cloud-netflix/
 
 ## <a name="oauth-2.0-overview"></a>OAuth 2.0 Overview
 
+OAuth2 is an authorization framework that specifies different ways a third-party application can obtain limited access to determined set of resources. 
+
+![OAuth2 abstract protocol](/images/OAuth2 abstract protocol flow.png)
+
+OAuth defines four roles:
+
+   **resource owner:**
+      An entity capable of granting access to a protected resource. When the resource owner is a person, it is referred to as an end-user.
+
+   **resource server:**
+      The server hosting the protected resources, capable of accepting and responding to protected resource requests using access tokens.
+
+   **client:**
+      An application making protected resource requests on behalf of the resource owner and with its authorization.  The term "client" does not imply any particular implementation characteristics (e.g., whether the application executes on a server, a desktop, or other devices).
+
+   **authorizationserver:**
+      The server issuing access tokens to the client after successfully authenticating the resource owner and obtaining authorization.
+      
+To get more details of how differnt authorizations work in OAuth2, please refer to the readme at **[auth-server](auth-server/README.md)**
+
 ## <a name="spring-oauth-2.0-overview"></a>Spring OAuth2 Overview
 
+Spring provides nice integration between Spring security and OAuth2 providers including the ability to setup your own authorization server. Please see [Spring security with OAuth2](http://projects.spring.io/spring-security-oauth/docs/oauth2.html) for more details. 

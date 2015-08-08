@@ -2,6 +2,7 @@ buildscript {
 	project.ext {
         bootVersion = '1.2.3.RELEASE'
 		cloudVersion = '1.0.0.RELEASE'
+		seurityVersion = '2.0.7.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -35,7 +36,11 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator:${project.bootVersion}")
 	compile("org.springframework.cloud:spring-cloud-config-client:${project.cloudVersion}")
 	compile("org.springframework.cloud:spring-cloud-starter-eureka:${project.cloudVersion}")
-        
+	compile("org.springframework.cloud:spring-cloud-starter-hystrix:${project.cloudVersion}")
+    
+    compile("org.springframework.cloud:spring-cloud-starter-security:${project.cloudVersion}")
+	compile("org.springframework.boot:spring-boot-starter-security:${project.bootVersion}")
+	compile("org.springframework.security.oauth:spring-security-oauth2:${project.seurityVersion}")
 
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
@@ -49,6 +54,14 @@ targetCompatibility = 1.7
 
 distDocker {
     exposePort 8080
+}
+
+bootRun {
+    jvmArgs = ['-Xdebug', '-Xrunjdwp:server=y,transport=dt_socket,address=4300,suspend=n','-Dspring.profiles.active=dev']
+}
+
+run {
+    jvmArgs = ['-Xdebug', '-Xrunjdwp:server=y,transport=dt_socket,address=4300,suspend=n','-Dspring.profiles.active=dev']
 }
 
 task createWrapper(type: Wrapper) {

@@ -3,7 +3,13 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/rohitghatol/sample-config
+          uri: https://github.com/anilallewar/sample-config
+# While in development mode, you can configure the config server to pick up configuration files from
+# the file system
+          
+#           uri: file://Users/anilallewar/Documents/Anil Allewar/Trainings/Code Samples/Enterprise Java/Micro Services/sample-config
 
+# Defines the port where the config server is running so that rest of the services can pick up 
+# their external configurations
 server:
   port: 8888          

@@ -21,7 +21,9 @@ import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeSe
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
 /**
- * The Class OAuth2Config.
+ * The Class OAuth2Config defines the authorization server that would
+ * authenticate the user and define the client that seeks authorization on the
+ * resource owner's behalf.
  */
 @Configuration
 @EnableAuthorizationServer
@@ -35,6 +37,13 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 
 	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+	/**
+	 * The OAuth2 tokens are defined in the datasource defined in the
+	 * <code>auth-server.yml</code> file stored in the Spring Cloud config
+	 * github repository.
+	 * 
+	 * @return
+	 */
 	@Bean
 	public JdbcTokenStore tokenStore() {
 		return new JdbcTokenStore(dataSource);
@@ -51,6 +60,14 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 		security.passwordEncoder(passwordEncoder);
 	}
 
+	/**
+	 * We set our authorization storage feature specifying that we would use the
+	 * JDBC store for token and authorization code storage.<br>
+	 * <br>
+	 * 
+	 * We also attach the {@link AuthenticationManager} so that password grants
+	 * can be processed.
+	 */
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints)
 			throws Exception {
@@ -59,6 +76,10 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 				.approvalStoreDisabled();
 	}
 
+	/**
+	 * Setup the client application which attempts to get access to user's
+	 * account after user permission.
+	 */
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients)
 			throws Exception {
@@ -66,15 +87,23 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 		clients.jdbc(dataSource)
 				.passwordEncoder(passwordEncoder)
 				.withClient("client")
-				.authorizedGrantTypes("client_credentials", "refresh_token","password")
+				.authorizedGrantTypes("authorization_code", "client_credentials", 
+						"refresh_token","password", "implicit")
 				.authorities("ROLE_CLIENT")
 				.resourceIds("apis")
 				.scopes("read")
 				.secret("secret")
-				.accessTokenValiditySeconds(30);
+				.accessTokenValiditySeconds(300);
 	
 	}
 	
+	/**
+	 * Configure the {@link AuthenticationManagerBuilder} with initial
+	 * configuration to setup users.
+	 * 
+	 * @author anilallewar
+	 *
+	 */
 	@Configuration
 	@Order(Ordered.LOWEST_PRECEDENCE - 20)
 	protected static class AuthenticationManagerConfiguration extends
@@ -83,15 +112,18 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 		@Autowired
 		private DataSource dataSource;
 
+		/**
+		 * Setup 2 users with different roles
+		 */
 		@Override
 		public void init(AuthenticationManagerBuilder auth) throws Exception {
 			// @formatter:off
 			auth.jdbcAuthentication().dataSource(dataSource).withUser("dave")
 					.password("secret").roles("USER");
+			auth.jdbcAuthentication().dataSource(dataSource).withUser("anil")
+					.password("password").roles("ADMIN");
 			// @formatter:on
 		}
-
 	}
-
 	
 }

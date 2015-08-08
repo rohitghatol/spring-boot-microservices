@@ -10,8 +10,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * The Main Spring Boot Application class
- *
+ * The Main Spring Boot Application class that starts the Eureka discovery
+ * server since the application is annotated with {@link EnableEurekaServer}.
+ * <br>
+ * <br>
+ * 
+ * Note that all these annotations work in conjunction with properties defined
+ * in the external configuration files specified by the config server.
+ * 
  * @author rohitghatol
  */
 
@@ -19,7 +25,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
-
 public class Application {
 	
 	/**

@@ -15,3 +15,5 @@ build
 bin
 .settings
 .gradle
+.DS_Store
+.classpath
