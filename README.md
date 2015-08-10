@@ -31,9 +31,11 @@ The application consists of 7 different services
 * [api-gateway](api-gateway/README.md) - API gateway that proxies all the micro-services
 * [web-portal](web-portal/README.md) - Single Page Application that provides the UI
 
-You can build all the projects by running the `./build-all-projects.sh` on Mac/Linux systems and then going to each individual folder and running the jars using the `java -jar build/libs/sam&lt;application_name&gt;` command.
+    * Running on local m/c
+    
+        * You can build all the projects by running the `./build-all-projects.sh` on Mac/Linux systems and then going to each individual folder and running the jars using the `java -jar build/libs/sam<application_name>.jar` command.
 
-Please refer to the individual readme files on instructions of how to run the services. For demo, you can run the applications in the same order listed above.
+        * Please refer to the individual readme files on instructions of how to run the services. For demo, you can run the applications in the same order listed above.
 
 Note:
 * If the gradle wrapper doesn't work, then install gradle and run `gradle wrapper` before using `gradlew`.
