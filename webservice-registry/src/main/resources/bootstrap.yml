@@ -3,6 +3,6 @@ spring:
     name: webservice-registry
   cloud:
     config:
-      uri: http://localhost:8888
+      uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://localhost:8888}
        
        
