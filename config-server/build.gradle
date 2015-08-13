@@ -46,7 +46,7 @@ targetCompatibility = 1.7
 
 
 distDocker {
-    exposePort 8080
+    exposePort 8888
     setEnvironment 'JAVA_OPTS', '-Dspring.profiles.active=docker'
 }
 
