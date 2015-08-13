@@ -4,6 +4,8 @@ This repository is an example of how to get Microservices going using Spring Boo
 # Table of Content
 * [Contributors](#contributors)
 * [Using the application](#using-application)
+    * [Running on local m/c](#run_local_mc)
+    * [Running using docker - NOT WORKING](#run_docker) 
 * [Microservices Overview](#microservices-overview)
 * [Netflix OSS](#netflix-oss)
 * [Spring Boot Overview](#spring-boot-overview)
@@ -31,12 +33,12 @@ The application consists of 7 different services
 * [api-gateway](api-gateway/README.md) - API gateway that proxies all the micro-services
 * [web-portal](web-portal/README.md) - Single Page Application that provides the UI
 
-    * Running on local m/c
+    * <a name="run_local_mc"></a>Running on local m/c
     
         * You can build all the projects by running the `./build-all-projects.sh` on Mac/Linux systems and then going to each individual folder and running the jars using the `java -jar build/libs/sam<application_name>.jar` command.
         * Please refer to the individual readme files on instructions of how to run the services. For demo, you can run the applications in the same order listed above.
         
-    * Running using docker (**NOTE: NOT WORKING with latest docker 1.8x since the gradle docker task is NOT compatible; also bug in Spring Boot 1.2.x**)
+    * <a name="run_docker"></a>Running using docker (**NOTE: NOT WORKING with latest docker 1.8x since the gradle docker task is NOT compatible; also bug in Spring Boot 1.2.x**)
     
         * [Docker](https://www.docker.com) is an open platform for building, shipping and running distributed applications. Follow steps on the site to install docker based on your operating system.
         * **Currently there is a [bug in Spring Boot 1.2.x](https://github.com/spring-projects/spring-boot/commit/8168e8a3275f17646c5c2bf628d2f3417369c583) that affects the way how JPA starts in an app launched with executable jar. Hence while the docker containers are good to go, we will need to change the application once Spring boot 1.3 is released so that we can run this on docker.**
