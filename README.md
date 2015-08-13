@@ -34,8 +34,48 @@ The application consists of 7 different services
     * Running on local m/c
     
         * You can build all the projects by running the `./build-all-projects.sh` on Mac/Linux systems and then going to each individual folder and running the jars using the `java -jar build/libs/sam<application_name>.jar` command.
-
         * Please refer to the individual readme files on instructions of how to run the services. For demo, you can run the applications in the same order listed above.
+        
+    * Running using docker (**NOTE: NOT WORKING with latest docker 1.8x since the gradle docker task is NOT compatible; also bug in Spring Boot 1.2.x**)
+    
+        * [Docker](https://www.docker.com) is an open platform for building, shipping and running distributed applications. Follow steps on the site to install docker based on your operating system.
+        * **Currently there is a [bug in Spring Boot 1.2.x](https://github.com/spring-projects/spring-boot/commit/8168e8a3275f17646c5c2bf628d2f3417369c583) that affects the way how JPA starts in an app launched with executable jar. Hence while the docker containers are good to go, we will need to change the application once Spring boot 1.3 is released so that we can run this on docker.**
+        * Once docker in setup, we would reset the VM so as to start fresh. The examples were developed on Mac so follow these step; they would be fairly similar on Windows.
+        * Once you open the docker program through terminal, follow these steps
+            * Reset the VM => `boot2docker delete`
+            * Start the VM giving it around 8 GB of RAM => `boot2docker init -m 8192`
+            * Check whether the initialization parameters were successful => `boot2docker info`
+            * Start the VM => `boot2docker up`
+            * To connect the Docker client to the Docker daemon => `$(boot2docker shellinit)`
+        * If you have not added your TLS certs to boot2docker; you would need to change docker to run the API on HTTP; while boot2docker 1.3 comes with TLS enabled. Hence you need to run the following command `$(docker run sequenceiq/socat)` at the docker prompt so that this image maps the api to HTTP port. You can check that it is working correctly(returns OK) using the command `curl http://192.168.59.103:2375/_ping` or connect the `http://192.168.59.103:2375/_ping` URL in the browser.
+        * Run the mysql container using `docker run -d -e  MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=auth --name auth-db -p 3306:3306 mysql`
+        * On the mac command prompt, navigate to the root folder of the application (spring-boot-microservices) and run the `./docker-image-all-projects.sh` command. This should build all the images and publish them to docker.
+        * Run the individual images as below; note that the auth-server and api-gateway images fail because of Spring Boot 1.2.x bug.
+            * Config Server
+                * docker run -d --name config-server -p 8888:8888 anilallewar/config-server
+                * docker logs -f config-server
+            * Eureka Server
+                * docker run -d --name registry-server -p 8761:8761 anilallewar/webservice-registry
+                * docker logs -f registry-server
+            * OAuth Server
+                * docker run -d --name auth-server -p 8899:8899 anilallewar/auth-server
+                * docker logs -f auth-server
+            * User Webservice    
+                * docker run -d --name user-webservice anilallewar/user-webservice
+                * docker logs -f user-web service
+            * Task Webservice    
+                * docker run -d --name task-webservice anilallewar/task-webservice
+                * docker logs -f task-webservice
+            * Comments Webservice    
+                * docker run -d --name comments-webservice anilallewar/comments-webservice
+                * docker logs -f comments-webservice
+            * Web Portal    
+                * docker run -d --name web-portal anilallewar/web-portal
+                * docker logs -f web-portal
+            * Zuul API Gateway    
+                * docker run -d --name api-gateway -p 8080:8080 anilallewar/api-gateway
+                * docker logs -f api-gateway
+        * We also have a [docker-compose](https://docs.docker.com/compose/) file that can be used to start all the containers together using `docker-compose up -d`. However this doesn't work in our case since our containers need to be started in order e.g. config-server before everything, webservice-registry before rest of Eureka clients. Docker compose starts all containers together and this fails because containers like auth-server, web-portal start before their dependent containers have started. Please see [here](https://github.com/docker/compose/issues/374) for more details.        
 
 Note:
 * If the gradle wrapper doesn't work, then install gradle and run `gradle wrapper` before using `gradlew`.
