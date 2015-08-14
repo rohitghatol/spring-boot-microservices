@@ -15,7 +15,6 @@ buildscript {
     }
 }
 
-apply plugin: 'application'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 apply plugin: 'java'
@@ -46,14 +45,21 @@ dependencies {
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
 }
 
-group = 'rohitghatol'
+group = 'anilallewar'
+mainClassName = 'com.rohitghatol.microservices.task.Application'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-
 distDocker {
     exposePort 8080
+    setEnvironment 'JAVA_OPTS', '-Dspring.profiles.active=docker'
+}
+
+docker {
+    useApi true
+    hostUrl 'http://192.168.59.103:2375'
+    baseImage = 'java:7'
 }
 
 bootRun {

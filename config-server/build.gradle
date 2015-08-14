@@ -14,7 +14,6 @@ buildscript {
     }
 }
 
-apply plugin: 'application'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 apply plugin: 'java'
@@ -35,20 +34,26 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator:${project.bootVersion}")
 	compile("org.springframework.cloud:spring-cloud-config-server:1.0.0.RELEASE")
     
-	
-
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
 }
 
-group = 'rohitghatol'
+group = 'anilallewar'
+mainClassName = 'com.rohitghatol.microservices.config.Application'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 
 distDocker {
-    exposePort 8080
+    exposePort 8888
+    setEnvironment 'JAVA_OPTS', '-Dspring.profiles.active=docker'
+}
+
+docker {
+    useApi true
+    hostUrl 'http://192.168.59.103:2375'
+    baseImage = 'java:7'
 }
 
 task createWrapper(type: Wrapper) {

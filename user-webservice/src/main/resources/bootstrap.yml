@@ -9,3 +9,11 @@ spring:
 # Define the URL from where this service would pick up it's external configuration. Note that it is
 # pointing to the config-server aplication      
       uri: http://localhost:8888
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+     config:
+        uri: http://192.168.59.103:8888

@@ -1,0 +1,58 @@
+configserver:
+  image: anilallewar/config-server
+  restart: always
+
+eurekaregistry:
+  image: anilallewar/webservice-registry
+  restart: always
+  ports:
+    - "8761:8761"
+  links:
+    - configserver
+    
+authserver:
+  image: anilallewar/auth-server
+  restart: always
+  ports:
+    - "8899:8899"
+  links:
+    - configserver
+    
+apigateway:
+  image: anilallewar/api-gateway
+  restart: always
+  links:
+    - eurekaregistry
+    - authserver
+    - configserver
+
+webportal:
+  image: anilallewar/web-portal
+  restart: always
+  links:
+    - eurekaregistry
+    - configserver
+
+userwebservice:
+  image: anilallewar/user-webservice
+  restart: always
+  links:
+    - eurekaregistry
+    - authserver
+    - configserver
+
+taskwebservice:
+  image: anilallewar/task-webservice
+  restart: always
+  links:
+    - eurekaregistry
+    - authserver
+    - configserver
+    
+commentswebservice:
+  image: anilallewar/comments-webservice
+  restart: always
+  links:
+    - eurekaregistry
+    - authserver
+    - configserver

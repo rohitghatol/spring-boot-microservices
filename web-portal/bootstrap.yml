@@ -1,6 +1,0 @@
-spring:
-  application:
-    name: web-portal
-  cloud:
-    config:
-      uri: http://localhost:8888

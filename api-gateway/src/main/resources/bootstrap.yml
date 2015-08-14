@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      uri: http://localhost:8888
+      
+---
+
+spring:
+  profiles: docker
+  cloud:
+     config:
+        uri: http://192.168.59.103:8888
