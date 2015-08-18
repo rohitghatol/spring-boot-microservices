@@ -6,6 +6,7 @@ This repository is an example of how to get Microservices going using Spring Boo
 * [Using the application](#using-application)
     * [Running on local m/c](#run_local_mc)
     * [Running using docker - NOT WORKING](#run_docker) 
+* [Application Architecture Diagram](#application-architecture)
 * [Microservices Overview](#microservices-overview)
 * [Netflix OSS](#netflix-oss)
 * [Spring Boot Overview](#spring-boot-overview)
@@ -14,6 +15,7 @@ This repository is an example of how to get Microservices going using Spring Boo
 * [Spring Cloud Netflix Overview](#spring-cloud-netflix-overview)
 * [OAuth 2.0 Overview](#oauth-2.0-overview)
 * [Spring OAuth 2.0 Overview](#spring-oauth-2.0-overview)
+
 
 ## <a name="contributors"></a>Contributors
 
@@ -82,6 +84,10 @@ The application consists of 7 different services
 * Note:
     * If the gradle wrapper doesn't work, then install gradle and run `gradle wrapper` before using `gradlew`.
     * If you need to setup the classpath correctly, then run `./gradlew clean build eclipse` which would setup the `.classpath` accordingly.
+
+## <a name="application-architecture"></a>Application Architecture Diagram
+
+![Demp Application Architecture](/images/Project_architecture.jpg)
 
 ## <a name="microservices-overview"></a>Microservices Overview
 
