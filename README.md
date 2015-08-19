@@ -87,7 +87,11 @@ The application consists of 7 different services
 
 ## <a name="application-architecture"></a>Application Architecture Diagram
 
-![Demp Application Architecture](/images/Project_architecture.jpg)
+### Target Architecture
+![Target Architecture](/images/Target_Architecture.jpg)
+
+### Application Components
+![Components](/images/Application_Components.jpg)
 
 ## <a name="microservices-overview"></a>Microservices Overview
 
