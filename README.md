@@ -3,10 +3,10 @@ This repository is an example of how to get Microservices going using Spring Boo
 
 # Table of Content
 * [Contributors](#contributors)
+* [Application Architecture](#application-architecture)
 * [Using the application](#using-application)
     * [Running on local m/c](#run_local_mc)
     * [Running using docker - NOT WORKING](#run_docker) 
-* [Application Architecture Diagram](#application-architecture)
 * [Microservices Overview](#microservices-overview)
 * [Netflix OSS](#netflix-oss)
 * [Spring Boot Overview](#spring-boot-overview)
@@ -22,7 +22,7 @@ This repository is an example of how to get Microservices going using Spring Boo
 * [Rohit Ghatol](https://www.linkedin.com/in/rohitghatol)
 * [Anil Allewar](https://www.linkedin.com/pub/anil-allewar/18/378/393)
 
-## <a name="using-application"></a>Using the application
+## <a name="application-architecture"></a>Application Architecture
 
 The application consists of 7 different services 
 
@@ -34,6 +34,14 @@ The application consists of 7 different services
 * [comments-webservice](comments-webservice/README.md) - Comments for task micro-service
 * [api-gateway](api-gateway/README.md) - API gateway that proxies all the micro-services
 * [web-portal](web-portal/README.md) - Single Page Application that provides the UI
+
+### Target Architecture
+![Target Architecture](/images/Target_Architecture.jpg)
+
+### Application Components
+![Components](/images/Application_Components.jpg)
+
+## <a name="using-application"></a>Using the application
 
 ### <a name="run_local_mc"></a>Running on local m/c
 
@@ -84,14 +92,6 @@ The application consists of 7 different services
 * Note:
     * If the gradle wrapper doesn't work, then install gradle and run `gradle wrapper` before using `gradlew`.
     * If you need to setup the classpath correctly, then run `./gradlew clean build eclipse` which would setup the `.classpath` accordingly.
-
-## <a name="application-architecture"></a>Application Architecture Diagram
-
-### Target Architecture
-![Target Architecture](/images/Target_Architecture.jpg)
-
-### Application Components
-![Components](/images/Application_Components.jpg)
 
 ## <a name="microservices-overview"></a>Microservices Overview
 
