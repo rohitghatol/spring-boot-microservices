@@ -1,6 +1,6 @@
 # NOTE
 
-**This repository is NO longer being actively maintained and out-of-sync with the latest Spring Boot and Spring Cloud releases.
+**This repository is NO longer being actively maintained and out-of-sync with the latest Spring Boot and Spring Cloud releases.**
 
 Please fork the [microservices-basics-spring-boot](https://github.com/anilallewar/microservices-basics-spring-boot) repository for the latest changes.
 
@@ -8,7 +8,7 @@ Additional features added to the new repository
 * Changes for supporting Spring OAuth2 when it moved from Spring cloud to Spring boot in 1.3 version
 * Docker - building services as containers and orchestrating them using various mechanisms
 * implementation for consumer driven contracts (CDC) and distributed tracing
-* Bug fixes**
+* Bug fixes
 ----
 
 # Spring Boot MicroServices Template
