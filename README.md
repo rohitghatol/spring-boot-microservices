@@ -1,3 +1,16 @@
+# NOTE
+
+**This repository is NO longer being actively maintained and out-of-sync with the latest Spring Boot and Spring Cloud releases.**
+
+Please fork the [microservices-basics-spring-boot](https://github.com/anilallewar/microservices-basics-spring-boot) repository for the latest changes.
+
+Additional features added to the new repository
+* Changes for supporting Spring OAuth2 when it moved from Spring cloud to Spring boot in 1.3 version
+* Docker - building services as containers and orchestrating them using various mechanisms
+* implementation for consumer driven contracts (CDC) and distributed tracing
+* Bug fixes
+----
+
 # Spring Boot MicroServices Template
 This repository is an example of how to get Microservices going using Spring Boot, Spring Cloud, Spring OAuth 2 and Netflix OSS frameworks.
 
@@ -6,7 +19,7 @@ This repository is an example of how to get Microservices going using Spring Boo
 * [Application Architecture](#application-architecture)
 * [Using the application](#using-application)
     * [Running on local m/c](#run_local_mc)
-    * [Running using docker - NOT WORKING](#run_docker) 
+    * [Running using docker - NOT WORKING](#run_docker)
 * [Microservices Overview](#microservices-overview)
 * [Netflix OSS](#netflix-oss)
 * [Spring Boot Overview](#spring-boot-overview)
@@ -24,7 +37,7 @@ This repository is an example of how to get Microservices going using Spring Boo
 
 ## <a name="application-architecture"></a>Application Architecture
 
-The application consists of 7 different services 
+The application consists of 7 different services
 
 * [config server](config-server/README.md) - setup external configuration
 * [webservice-registry](webservice-registry/README.md) - Eureka server
@@ -47,9 +60,9 @@ The application consists of 7 different services
 
 * You can build all the projects by running the `./build-all-projects.sh` on Mac/Linux systems and then going to each individual folder and running the jars using the `java -jar build/libs/sam<application_name>.jar` command.
 * Please refer to the individual readme files on instructions of how to run the services. For demo, you can run the applications in the same order listed above.
-        
+
 ### <a name="run_docker"></a>Running using docker (**NOTE: NOT WORKING with latest docker 1.8x since the gradle docker task is NOT compatible; also bug in Spring Boot 1.2.x**)
-    
+
 * [Docker](https://www.docker.com) is an open platform for building, shipping and running distributed applications. Follow steps on the site to install docker based on your operating system.
 * Currently there is a **[bug in Spring Boot 1.2.x](https://github.com/spring-projects/spring-boot/commit/8168e8a3275f17646c5c2bf628d2f3417369c583)** that affects the way how JPA starts in an app launched with executable jar. Hence while the docker containers are good to go, we will need to change the application once Spring boot 1.3 is released so that we can run this on docker.
 * Once docker is setup, we would reset the VM so as to start fresh. The examples were developed on Mac so follow these step; they would be fairly similar on Windows.
@@ -95,7 +108,7 @@ The application consists of 7 different services
 
 ## <a name="microservices-overview"></a>Microservices Overview
 
-There is a growing adoption of Microservices in today's world. Numerous SAAS Companies are moving away from building monolithical products and instead adopting Microservices. 
+There is a growing adoption of Microservices in today's world. Numerous SAAS Companies are moving away from building monolithical products and instead adopting Microservices.
 
 ### Focus on Component
 
@@ -105,7 +118,7 @@ In microservices world, a web serive or a microservice is the unit of component.
 
 ### Focus on Business Capabilities and Running a Product
 
-Another key aspect of microservices is that the focus of a team building a component now moves away from just delivering that component to running and maintainig that business functionality given by that component. 
+Another key aspect of microservices is that the focus of a team building a component now moves away from just delivering that component to running and maintainig that business functionality given by that component.
 
 ![Focus on Business Capabilities](http://martinfowler.com/articles/microservices/images/conways-law.png)
 
@@ -148,10 +161,10 @@ A Microservice environment needs a gateway. A Gateway is the only entity exposed
 * Centralized Authentication/Authorization
 * Load Balancing
 * etc
-* 
+*
 
 ### <img src="http://netflix.github.io/assets/repos/ribbon.png" width="30px"> Ribbon
-Ribbon is a Load Balancing Client and is meant to work with Eureka Server. Ribbon talks to Eureka server and relies on it to get base url to one of the instances of microservice in question. 
+Ribbon is a Load Balancing Client and is meant to work with Eureka Server. Ribbon talks to Eureka server and relies on it to get base url to one of the instances of microservice in question.
 
 ## <a name="spring-boot-overview"></a>Spring Boot Overview
 
@@ -190,7 +203,7 @@ public class UserController{
 }
 ```
 
-Build 
+Build
 ```
 $>./gradlew clean build
 say this Generates app.jar
@@ -228,7 +241,7 @@ You can read in detail about Spring Cloud Netflix here - http://cloud.spring.io/
 
 ## <a name="oauth-2.0-overview"></a>OAuth 2.0 Overview
 
-OAuth2 is an authorization framework that specifies different ways a third-party application can obtain limited access to determined set of resources. 
+OAuth2 is an authorization framework that specifies different ways a third-party application can obtain limited access to determined set of resources.
 
 ![OAuth2 abstract protocol](/images/OAuth2 abstract protocol flow.png)
 
@@ -245,9 +258,9 @@ OAuth defines four roles:
 
    **authorizationserver:**
       The server issuing access tokens to the client after successfully authenticating the resource owner and obtaining authorization.
-      
+
 To get more details of how differnt authorizations work in OAuth2, please refer to the readme at **[auth-server](auth-server/README.md)**
 
 ## <a name="spring-oauth-2.0-overview"></a>Spring OAuth2 Overview
 
-Spring provides nice integration between Spring security and OAuth2 providers including the ability to setup your own authorization server. Please see [Spring security with OAuth2](http://projects.spring.io/spring-security-oauth/docs/oauth2.html) for more details. 
+Spring provides nice integration between Spring security and OAuth2 providers including the ability to setup your own authorization server. Please see [Spring security with OAuth2](http://projects.spring.io/spring-security-oauth/docs/oauth2.html) for more details.

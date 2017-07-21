@@ -7,11 +7,11 @@ buildscript {
         mavenCentral()
         jcenter()
     }
-    
+
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${project.bootVersion}"
         classpath 'se.transmode.gradle:gradle-docker:1.2'
-		classpath "io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE"
+		classpath "io.spring.gradle:dependency-management-plugin:1.0.2.RELEASE"
     }
 }
 
@@ -37,15 +37,15 @@ jar {
     version =  '0.0.1'
 }
 
-repositories { 
-	mavenCentral() 
+repositories {
+	mavenCentral()
 	jcenter()
 }
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web:${project.bootVersion}")    
+    compile("org.springframework.boot:spring-boot-starter-web:${project.bootVersion}")
     compile("org.springframework.boot:spring-boot-starter-actuator:${project.bootVersion}")
 	compile("org.springframework.cloud:spring-cloud-config-client:${project.cloudVersion}")
-	compile("org.springframework.cloud:spring-cloud-starter-eureka-server:${project.cloudVersion}") 
+	compile("org.springframework.cloud:spring-cloud-starter-eureka-server:${project.cloudVersion}")
 
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
@@ -71,4 +71,3 @@ docker {
 task createWrapper(type: Wrapper) {
     gradleVersion = '2.0'
 }
-
